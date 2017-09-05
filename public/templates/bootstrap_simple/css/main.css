@@ -1,0 +1,47 @@
+body {
+    padding-top: 50px;
+    background-color: #262525;
+    color: #aaaaaa;
+}
+
+h1 {
+    color: #f54997;
+}
+
+.starter-template {
+    text-align: center;
+}
+
+/* Search results START */
+#search-result {
+    text-align: left;
+    font-weight: bold;
+}
+
+h4.result-title {
+    color: #ffffff;
+}
+
+.bottom-spacing {
+    margin-bottom: 20px;
+}
+/* Search results END */
+
+/* Input form START */
+.form-control {
+    background-color: #767676;
+    color: #000000;
+    font-weight: bold;
+    border: 0;
+}
+
+.form-control:focus {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.form-control::-webkit-input-placeholder { font-weight: bold; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { font-weight: bold; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { font-weight: bold; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { font-weight: bold; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { font-weight: bold; }  /* Microsoft Edge */
+/* Input form END */

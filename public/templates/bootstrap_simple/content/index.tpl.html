@@ -1,0 +1,44 @@
+        <div class="container">
+            <div class="starter-template">
+                <div id="programme-finder" data-external-proxy-endpoint="{$external_proxy_endpoint}">
+                    <div class="row">
+                        <div class="col-xs-0 col-sm-2 col-md-2"></div>
+                        <div class="col-xs-12 col-sm-8 col-md-8" id="search-box">
+                            <div class="row bottom-spacing">
+                                <div class="col-sm-12 col-md-12">
+                                    <h1>Programme finder</h1>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="search-input" size="200" placeholder="Begin typing to search for a programme" value="{if isset($search_query)}{$search_query}{/if}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='search-result'>
+                            {if isset($search_results)}
+                                {if $search_results.no_of_results eq 0}
+                                    There are no results
+                                {else}
+                                    {foreach from=$search_results.results item=search_result}
+                                <div class="row bottom-spacing search-result">
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                    {if isset($search_result.image)}
+                                        {if $search_result.image neq ''}
+                                        <img src="{$search_result.image}" class="img-responsive" alt="{if isset($search_result.title)}{$search_result.title}{/if}" title="{if isset($search_result.title)}{$search_result.title}{/if}" width="160" height="90" />
+                                        {/if}
+                                    {/if}
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9 col-md-9">
+                                        <h4 class="result-title">{if isset($search_result.title)}{$search_result.title}{/if}</h4>
+                                        <div class="result-short-synopsis">{if isset($search_result.short_synopsis)}{$search_result.short_synopsis}{/if}</div>
+                                    </div>
+                                </div>
+                                <hr />
+                                    {/foreach}
+                                {/if}
+                            {/if}
+                            </div>
+                        </div>
+                        <div class="col-xs-0 col-sm-2 col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container -->

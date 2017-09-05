@@ -1,0 +1,46 @@
+<?php
+ini_set('display_startup_errors', 1);
+ini_set('display_error', 1);
+error_reporting(E_ALL);
+date_default_timezone_set("UTC"); 
+
+/* proxy.php settings START */
+$debug = false; // If true the script prints additional debug lines to video
+$log_file = "/var/log/programme_finder/debug.log";
+/* proxy.php settings END */
+
+$db_host = "localhost";
+$db_user = "foouser";
+$db_pass = "abc";
+$db_name = "programme_finder";
+$charset = 'utf8';
+
+$internal_proxy_endpoint = "http://localhost/programme_finder/app/Search/search.php";
+$external_proxy_endpoint = "http://10.0.0.10/programme_finder/app/Search/search.php";
+
+define("ROOT_DIR", "/var/www/programme_finder/");
+define("INCLUDES_DIR", ROOT_DIR ."includes/");
+define("SMARTY_DIR", ROOT_DIR ."vendor/smarty/smarty/libs/");
+define("TEMPLATES_DIR", ROOT_DIR ."public/");
+define("TEMPLATE_NAME", "bootstrap_simple");
+define("TEMPLATE_DIR", "public/templates/". TEMPLATE_NAME ."/");
+define("TEMPLATE_EXT", ".tpl.html");
+
+// put full path to Smarty.class.php
+require(SMARTY_DIR.'bootstrap.php');
+
+$smarty = new Smarty();
+
+$smarty->setTemplateDir(TEMPLATES_DIR .'templates/'. TEMPLATE_NAME);
+$smarty->setCompileDir(TEMPLATES_DIR .'templates_c');
+$smarty->setCacheDir(TEMPLATES_DIR .'cache');
+$smarty->setConfigDir(TEMPLATES_DIR .'configs');
+
+//$smarty->force_compile = true;
+$smarty->debugging = true;
+
+$smarty->assign('TEMPLATE_CSS_DIR', TEMPLATE_DIR .'css');
+$smarty->assign('TEMPLATE_JS_DIR', TEMPLATE_DIR .'js');
+$smarty->assign('TEMPLATE_IMAGES_DIR', TEMPLATE_DIR .'images');
+$smarty->assign('TEMPLATE_FONTS_DIR', TEMPLATE_DIR .'fonts');
+$smarty->assign('TEMPLATE_EXT', TEMPLATE_EXT);
